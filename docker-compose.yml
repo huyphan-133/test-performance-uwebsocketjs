@@ -1,0 +1,26 @@
+version: '3.5'
+
+services:
+  node1:
+    build: ./server
+    depends_on:
+      - redis
+      - nginx
+  # node2:
+  #   build: ./server
+  #   depends_on:
+  #     - redis
+  #     - nginx
+  # node3:
+  #   build: ./server
+  #   depends_on:
+  #     - redis
+  #     - nginx
+  nginx:
+    image: nginx
+    ports:
+      - 9001:3000
+    volumes:
+      - ./nginx/conf:/etc/nginx/conf.d
+  redis:
+    image: redis
