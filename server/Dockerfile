@@ -7,4 +7,4 @@ COPY package.json /opt/service
 RUN npm install
 
 COPY . /opt/service
-CMD node server.js
+CMD node src/server.js

@@ -6,11 +6,11 @@ services:
     depends_on:
       - redis
       - nginx
-  # node2:
-  #   build: ./server
-  #   depends_on:
-  #     - redis
-  #     - nginx
+  node2:
+    build: ./server
+    depends_on:
+      - redis
+      - nginx
   # node3:
   #   build: ./server
   #   depends_on:
