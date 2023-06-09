@@ -1,0 +1,20 @@
+package com.fss.fo.mserver.exchange;
+option java_package = "com.fss.fo.mserver.exchange";
+option java_outer_classname = "PTMatchProtos";
+message PTMatch {
+    optional string Id = 1;
+    optional string Symbol = 2;
+    optional string ConfirmNo = 3;
+    optional int64 MatchVol = 4;
+    optional string Price = 5;
+    optional string MarketId = 6;
+    optional bool IsActive = 7;
+    optional string tradingdate = 8;
+    optional string Time = 9;
+    optional int64 LastSeq = 10;
+    optional string PColor = 11;
+    optional string ceiling = 12;
+    optional string floor = 13;
+    optional string reference = 14;
+    optional string MarketCode = 15;
+}

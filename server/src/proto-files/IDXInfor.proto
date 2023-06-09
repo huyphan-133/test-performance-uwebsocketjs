@@ -1,0 +1,31 @@
+package com.fss.fo.mserver.exchange;
+option java_package = "com.fss.fo.mserver.exchange";
+option java_outer_classname = "IDXInforProtos";
+message IDXInfor {
+    optional string Id = 1;
+    optional string IndexCode = 2;
+    optional string IndexValue = 3;
+    optional string TradingDate = 4;
+    optional string Time = 5;
+    optional string Change = 6;
+    optional string RatioChange = 7;
+    optional string TotalQtty = 8;
+    optional string TotalValue = 9;
+    optional string CurrentStatus = 10;
+    optional string TotalStock = 11;
+    optional string PriorIndexVal = 12;
+    optional string HighestIndex = 13;
+    optional string LowestIndex = 14;
+    optional string CloseIndex = 15;
+    optional string TypeIndex = 16;
+    optional string IndexName = 17;
+    optional string TotalQttyPT = 18;
+    optional string TotalValuePT = 19;
+    optional string Up = 20;
+    optional string Down = 21;
+    optional string NoChange = 22;
+    optional string Ceiling = 23;
+    optional string Floor = 24;
+    optional string FloorCode = 25;
+    optional string IndexId = 26;
+}

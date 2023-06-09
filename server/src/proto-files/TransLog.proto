@@ -1,0 +1,17 @@
+package com.fss.fo.mserver.exchange;
+option java_package = "com.fss.fo.mserver.exchange";
+option java_outer_classname = "TransLogProtos";
+message TransLog {
+    optional string Id = 1;
+    optional int32 sequenceMsg = 2;
+    optional string tradingdate = 3;
+    optional string symbol = 4;
+    optional string formattedTime = 5;
+    optional string lastColor = 6;
+    optional string formattedMatchPrice = 7;
+    optional string changeColor = 8;
+    optional string formattedChangeValue = 9;
+    optional string formattedVol = 10;
+    optional string formattedAccVol = 11;
+    optional string formattedAccVal = 12;
+}

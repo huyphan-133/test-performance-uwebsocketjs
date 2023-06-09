@@ -1,0 +1,15 @@
+package com.fss.fo.mserver.exchange;
+option java_package = "com.fss.fo.mserver.exchange";
+option java_outer_classname = "OddLotTopNPriceProtos";
+message OddLotTopNPrice {
+	optional string Id = 1;
+    optional string Symbol = 2;
+    optional string Top = 3;
+    optional string BuyPrice = 4;
+    optional string BuyQuantity = 5;
+    optional string CumulativeBuyVolume = 6;
+    optional string SellPrice = 7;
+    optional string SellQuantity = 8;
+    optional string CumulativeSellVolume = 9;
+    optional string Action = 10;
+}

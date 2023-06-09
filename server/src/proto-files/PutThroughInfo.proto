@@ -1,0 +1,23 @@
+package com.fss.fo.mserver.exchange;
+option java_package = "com.fss.fo.mserver.exchange";
+option java_outer_classname = "PutThroughInfoProtos";
+message PutThroughInfo
+{
+    optional string Id = 1;
+    optional string Symbol = 2;
+    optional int64 Vol = 3;
+    optional int64 MatchVol = 4;
+    optional int32 Price = 5;
+    optional string Side = 6;
+    optional string Time = 7;
+    optional bool IsActive = 8;
+    optional string MarketId = 9;
+    optional string OrderId = 10;
+    optional string tradingdate = 11;
+    optional int64 LastSeq = 12;
+    optional string PColor = 13;
+    optional string ceiling = 14;
+    optional string floor = 15;
+    optional string reference = 16;
+    optional string MarketCode = 17;
+}

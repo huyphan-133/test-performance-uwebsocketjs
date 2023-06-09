@@ -1,0 +1,33 @@
+package com.fss.fo.mserver.exchange;
+option java_package = "com.fss.fo.mserver.exchange";
+option java_outer_classname = "MarketInforProtos";
+message MarketInfor {
+    optional string Id = 1;
+    optional int32 sequenceMsg = 2;
+    optional string tradingdate = 3;
+    optional string marketIndex = 4;
+    optional string indexTime = 5;
+    optional string indexColor = 6;
+    optional string indexChange = 7;
+    optional string indexPercentChange = 8;
+    optional string totalTrade = 9;
+    optional string totalVolume = 10;
+    optional string totalValue = 11;
+    optional string marketStatus = 12;
+    optional string advances = 13;
+    optional string declines = 14;
+    optional string noChange = 15;
+    optional string advancesVolumn = 16;
+    optional string declinesVolumn = 17;
+    optional string noChangeVolumn = 18;
+    optional string marketId = 19;
+    optional string marketCode = 20;
+    optional string PRV_PRIOR_MARKET_INDEX = 21;
+    optional string AVR_MARKET_INDEX = 22;
+    optional string AVR_PRIOR_MARKET_INDEX = 23;
+    optional string AVR_CHG_INDEX = 24;
+    optional string AVR_PCT_INDEX = 25;
+    optional string PT_TOTAL_QTTY = 26;
+    optional string PT_TOTAL_VALUE = 27;
+    optional string PT_TOTAL_TRADE = 28;
+}

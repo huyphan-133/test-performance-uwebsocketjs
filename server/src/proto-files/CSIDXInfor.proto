@@ -1,0 +1,15 @@
+package com.fss.fo.mserver.exchange;
+option java_package = "com.fss.fo.mserver.exchange";
+option java_outer_classname = "CSIDXInforProtos";
+message CSIDXInfor {
+    optional string Id = 1;
+    optional string IndexCode = 2;
+    optional string StockNo = 3;
+    optional string Symbol = 4;
+    optional string TotalQtty = 5;
+    optional string Weighted = 6;
+    optional string AddDate = 7;
+    optional int32 IndexId = 8;
+    optional string FloorCode = 9;
+    optional string TradingDate = 10;
+}
