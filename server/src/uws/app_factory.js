@@ -11,7 +11,7 @@ let connection = 0;
 /* We measure transactions per second server side */
 let transactionsNumber = 0;
 
-function createApp(port, publisher, shares) {
+function createApp(port) {
     const app = uWS.App().ws('/*', {
         open: () => {
             /* For now we only have one canvas */
@@ -27,36 +27,6 @@ function createApp(port, publisher, shares) {
                 case 'sub': {
                     /* Subscribe to the share's value stream */
                     ws.subscribe('shares/' + json.share + '/value');
-                    break;
-                }
-                case 'buy': {
-                    transactionsNumber++;
-
-                    /* For simplicity, shares increase 0.1% with every buy */
-                    shares[json.share] *= 1.001;
-
-                    /* Value of share has changed, update subscribers */
-                    publisher.publish(
-                        'message',
-                        JSON.stringify({
-                            room: 'shares/' + json.share + '/value',
-                            message: JSON.stringify({ [json.share]: shares[json.share] })
-                        })
-                    );
-                    break;
-                }
-                case 'sell': {
-                    transactionsNumber++;
-
-                    /* For simplicity, shares decrease 0.1% with every sale */
-                    shares[json.share] *= 0.999
-                    publisher.publish(
-                        'message',
-                        JSON.stringify({
-                            room: 'shares/' + json.share + '/value',
-                            message: JSON.stringify({ [json.share]: shares[json.share] })
-                        })
-                    );
                     break;
                 }
             }

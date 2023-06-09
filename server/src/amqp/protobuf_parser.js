@@ -18,10 +18,11 @@ var protoMapping = [
 async function initialProtoRoot() {
     for (let i = 0; i < protoMapping.length; i++) {
         try {
-            var rootLoaded = await protobuf.load('./proto-files/' + protoMapping[i] + '.proto');
-            protoRoot[protoMapping[i]] = rootLoaded;
+            tag_classname = protoMapping[i]
+            var rootLoaded = await protobuf.load('./amqp/proto-files/' + tag_classname + '.proto');
+            protoRoot[tag_classname] = rootLoaded;
         } catch (error) {
-            console.log(TAG_CLASSNAME, 'initProtobufRoot: Exception', error);
+            console.log(tag_classname, 'initProtobufRoot: Exception', error);
         }
     }
 }
@@ -34,12 +35,12 @@ function convertBase64ToObject(base64Message) {
         var root = protoRoot[protoMapping[header]];
         if (!root) return null;
         // Obtain a message type
-        var MessageSchema = root.lookup(protoMapping[header]);
+        var messageSchema = root.lookup(protoMapping[header]);
 
         // Decode an Uint8Array (browser) or Buffer (node) to a message
         var buffer = byteArray.slice(8);
-        var message = MessageSchema.decode(buffer);
-        return message
+        var message = messageSchema.decode(buffer);
+        return { type: messageSchema.name, message }
     } catch (error) {
         console.error(error);
     }

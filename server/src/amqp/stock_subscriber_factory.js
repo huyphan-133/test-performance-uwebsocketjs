@@ -1,7 +1,8 @@
 const amqp = require("amqplib");
 const { convertBase64ToObject } = require("./protobuf_parser");
+const { handleStockInforObj } = require("../service/stock_message_handle");
 
-function createStockSubscriber(queueName) {
+function createStockSubscriber(queueName, publisher) {
     (async () => {
         try {
             const connection = await amqp.connect("amqp://kbsv_notification:_Qdp!LcV6AUKsNfhRQWoPYEvnrA.vJWX@10.100.30.100:5672");
@@ -12,25 +13,24 @@ function createStockSubscriber(queueName) {
                 await connection.close();
             });
 
-            await channel.assertQueue(queueName, { durable: true });
+            i = 0;
             await channel.consume(
                 queueName,
                 message => {
+                    // console.log(++i);
                     if (message !== null) {
                         let __msg = message.content.toString()
-                        console.log("\n=======================================================")
-                        console.log(__msg);
                         msgObj = convertBase64ToObject(__msg)
-                        console.log()
-                        console.log("=======================================================")
+                        if (msgObj.type == 'OddLotStockInfor') {
+                            handleStockInforObj(msgObj.message, publisher)
+                        }
                         channel.ack(message);
                     } else {
                         console.log('Consumer cancelled by server');
                     }
-                }
+                },
+                // { noAck: true }
             );
-
-            console.log(" [*] Waiting for messages. To exit press CTRL+C");
         } catch (err) {
             console.warn(err);
         }
