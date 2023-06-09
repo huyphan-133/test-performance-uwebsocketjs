@@ -25,6 +25,7 @@ function createApp(port) {
             let json = JSON.parse(decoder.write(Buffer.from(message)));
             switch (json.action) {
                 case 'sub': {
+                    console.log('client subscribe: '+json.share)
                     /* Subscribe to the share's value stream */
                     ws.subscribe('shares/' + json.share + '/value');
                     break;
