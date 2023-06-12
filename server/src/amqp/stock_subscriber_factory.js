@@ -17,10 +17,10 @@ function createStockSubscriber(queueName, publisher) {
             await channel.consume(
                 queueName,
                 message => {
-                    // console.log(++i);
                     if (message !== null) {
                         let __msg = message.content.toString()
                         msgObj = convertBase64ToObject(__msg)
+                        //update later type
                         if (msgObj.type == 'OddLotStockInfor') {
                             handleStockInforObj(msgObj.message, publisher)
                         }

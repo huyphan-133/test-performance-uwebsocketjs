@@ -1,4 +1,5 @@
 var protobuf = require("protobufjs");
+var path = require('path');
 
 var protoRoot = {};
 var protoMapping = [
@@ -19,7 +20,13 @@ async function initialProtoRoot() {
     for (let i = 0; i < protoMapping.length; i++) {
         try {
             tag_classname = protoMapping[i]
-            var rootLoaded = await protobuf.load('./amqp/proto-files/' + tag_classname + '.proto');
+            var protoFilePath = path.join(
+                __dirname,
+                'proto-files',
+                tag_classname + '.proto'
+            );
+            console.log(protoFilePath);
+            var rootLoaded = await protobuf.load(protoFilePath);
             protoRoot[tag_classname] = rootLoaded;
         } catch (error) {
             console.log(tag_classname, 'initProtobufRoot: Exception', error);

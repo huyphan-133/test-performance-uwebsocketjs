@@ -6,11 +6,11 @@ services:
     depends_on:
       - redis
       - nginx
-  # node2:
-  #   build: ./server
-  #   depends_on:
-  #     - redis
-  #     - nginx
+  node2:
+    build: ./server
+    depends_on:
+      - redis
+      - nginx
   # node3:
   #   build: ./server
   #   depends_on:
@@ -19,7 +19,7 @@ services:
   nginx:
     image: nginx
     ports:
-      - 9001:3000
+      - 3000:3000
     volumes:
       - ./nginx/conf:/etc/nginx/conf.d
   redis:
