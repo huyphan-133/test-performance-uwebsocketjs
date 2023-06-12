@@ -25,7 +25,6 @@ async function initialProtoRoot() {
                 'proto-files',
                 tag_classname + '.proto'
             );
-            console.log(protoFilePath);
             var rootLoaded = await protobuf.load(protoFilePath);
             protoRoot[tag_classname] = rootLoaded;
         } catch (error) {

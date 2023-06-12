@@ -4,7 +4,7 @@ function handleStockInforObj(stockInfor, publisher) {
     symbol = stockInfor.symbol
 
     //update later remove, it is temp
-    symbol = shares[parseInt(Math.random() * shares.length)]
+    // symbol = shares[parseInt(Math.random() * shares.length)]
     // console.log(`publish ${symbol}`)
     publisher.publish(
         'message',

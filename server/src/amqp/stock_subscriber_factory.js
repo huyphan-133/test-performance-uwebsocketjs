@@ -20,8 +20,8 @@ function createStockSubscriber(queueName, publisher) {
                     if (message !== null) {
                         let __msg = message.content.toString()
                         msgObj = convertBase64ToObject(__msg)
-                        //update later type
-                        if (msgObj.type == 'OddLotStockInfor') {
+                        //temp type OddLotStockInfor
+                        if (msgObj.type == 'StockInfor') {
                             handleStockInforObj(msgObj.message, publisher)
                         }
                         channel.ack(message);
