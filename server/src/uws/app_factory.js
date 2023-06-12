@@ -15,17 +15,17 @@ function createApp(port) {
     const app = uWS.App().ws('/*', {
         open: () => {
             /* For now we only have one canvas */
-            connection++
+            console.log(++connection);
         },
         close: () => {
-            connection--
+            console.log(--connection);
         },
         message: (ws, message, isBinary) => {
             /* Parse JSON and perform the action */
             let json = JSON.parse(decoder.write(Buffer.from(message)));
             switch (json.action) {
                 case 'sub': {
-                    console.log('client subscribe: '+json.share)
+                    // console.log('client subscribe: '+json.share)
                     /* Subscribe to the share's value stream */
                     ws.subscribe('shares/' + json.share + '/value');
                     break;
